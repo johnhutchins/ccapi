@@ -1,7 +1,8 @@
-var express = require('express')
-var serveStatic = require('serve-static')
+let express = require('express')
+let serveStatic = require('serve-static')
 
-var app = express()
+let app = express()
 
-app.use(serveStatic('public/ftp', { 'index': ['default.html', 'default.htm'] }))
-app.listen(3000)
+app.use(serveStatic('Test/', { 'index': ['mockActivity.json'] }))
+//app.get("/")
+app.listen(5000)
