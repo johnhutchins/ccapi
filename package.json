@@ -4,12 +4,14 @@
   "description": "API for the Cycle Cyle App",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\nTODO: Add Test Coverage\" && exit 1"
+    "dev2": "//nothing here yet...",
+    "start": "concurrently \"cd Test/ && node mockDataServer.js\" \"cd ccapi/ && node index.js\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^5.0.0",
     "express": "^4.17.1",
     "google-polyline": "^1.0.3",
     "node-fetch": "^2.6.0",
