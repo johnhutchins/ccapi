@@ -1,15 +1,19 @@
+
 const fetch = require('node-fetch');
 var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 //const BASE_URL = 'https://www.strava.com/api/v3/'
 const TEST_URL = 'http://localhost:5000';
 
-/* async function getActivity(){
+async function getActivity(){
     fetch(TEST_URL)
-        .then(data => console.log(data))
+        .then(response => response.json())
+        .then(data => console.log(typeof data))
 }
+getActivity()
 
-getActivity() */
+//example-using-fetch
+getActivity() 
 
 async function requestFetch(TEST_URL) {
   return fetch(TEST_URL)
@@ -37,3 +41,4 @@ function requestAJAX(url, callback) {
   console.log(smallerResult);
   return smallerResult;
 })();
+
