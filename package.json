@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "google-polyline": "^1.0.3",
     "node-fetch": "^2.6.0",
     "serve-static": "^1.14.1"
   }
