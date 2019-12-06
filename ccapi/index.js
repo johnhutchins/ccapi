@@ -50,12 +50,18 @@ async function getElevation(){
     //TODO option is to send multiple calls to retrieve the data if there are more than X data points
 
     const getElevationProfile =  await requestFetch('http://open.mapquestapi.com/elevation/v1/profile?key=CbuVY4beH3NvRW5MMm3cctx6YRqOYrw7&shapeFormat=raw&latLngCollection=39.74012,-104.9849,39.7995,-105.7237,39.6404,-106.3736')
-    console.log(getElevationProfile)
-    try{ 
-        const getElevationProfile =  await requestFetch(ELEV_PROFILE_URL)
-        console.log(getElevationProfile)
-    } catch (e){
-        
-    }
+    //console.log(getElevationProfile)
+
+    let chunksOfTen = splitArrToSmallerChunks(latLongArr)
+    console.log(chunksOfTen)
 }
 getElevation()
+
+function splitArrToSmallerChunks(bigArr){
+    //take an array and break it up into separate arrays of 10 each
+    let arrOfArr = []
+    while(bigArr.length){
+        arrOfArr.push(bigArr.splice(0,10))
+    }
+    return arrOfArr
+}
