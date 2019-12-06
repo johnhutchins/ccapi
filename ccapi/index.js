@@ -1,7 +1,6 @@
 const fetch = require('node-fetch')
 const polyline = require('google-polyline')
 const keys = require('../config')
-console.log(keys.API_KEY)
 
 let ELEV_PROFILE_URL = "http://open.mapquestapi.com/elevation/v1/profile"
 
@@ -28,7 +27,6 @@ async function getLatLong(){
 
 async function latLongArrBuilder(){
     const latLongObj = await getLatLong()
-    //need latLongArray to be an actual array
     let latLongArray = []
     for(let i=0;i<latLongObj.length;i++){
         latLongArray.push(latLongObj[i])
@@ -46,13 +44,18 @@ async function getElevation(){
 
     ELEV_PROFILE_URL += keys.API_KEY
     ELEV_PROFILE_URL += s
-    let res = encodeURI(ELEV_PROFILE_URL)
-    console.log(res)
-    try{
-        //http://open.mapquestapi.com/elevation/v1/profile?key=CbuVY4beH3NvRW5MMm3cctx6YRqOYrw7&shapeFormat=json&latLngCollection=37.82822,-122.26348
-        //const getElevationProfile = requestFetch(res)
-    } catch(e){
-        console.log(e)
+
+    //TODO below URL works.
+    //TODO URL that is built has so many data points that the request returns html, which fails the parsing. 
+    //TODO option is to send multiple calls to retrieve the data if there are more than X data points
+
+    const getElevationProfile =  await requestFetch('http://open.mapquestapi.com/elevation/v1/profile?key=CbuVY4beH3NvRW5MMm3cctx6YRqOYrw7&shapeFormat=raw&latLngCollection=39.74012,-104.9849,39.7995,-105.7237,39.6404,-106.3736')
+    console.log(getElevationProfile)
+    try{ 
+        const getElevationProfile =  await requestFetch(ELEV_PROFILE_URL)
+        console.log(getElevationProfile)
+    } catch (e){
+        
     }
 }
 getElevation()
