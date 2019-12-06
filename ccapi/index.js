@@ -1,7 +1,7 @@
 const fetch = require('node-fetch')
 const polyline = require('google-polyline')
-const { API_KEY } = require('../config')
-console.log(API_KEY)
+const keys = require('../config')
+console.log(keys.API_KEY)
 
 let ELEV_PROFILE_URL = "http://open.mapquestapi.com/elevation/v1/profile"
 
@@ -44,7 +44,7 @@ async function getElevation(){
     let s = '&shapeFormat=json&latLngCollection='
     s += latLongArr
 
-    ELEV_PROFILE_URL += api_key.api_key
+    ELEV_PROFILE_URL += keys.API_KEY
     ELEV_PROFILE_URL += s
     let res = encodeURI(ELEV_PROFILE_URL)
     console.log(res)
