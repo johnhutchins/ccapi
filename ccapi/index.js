@@ -56,19 +56,22 @@ getElevation()
 
 async function makeMultipleElevationProfileCallouts(chunkyArrs){
     //check length and divide and conquer here
-    console.log(ELEV_PROFILE_URL.length)
+    //console.log(ELEV_PROFILE_URL.length)
 
-    //TODO testing purposes below. this codes need refactor, but this callout will work
-    let first = chunkyArrs[0].toString()
-    let second = chunkyArrs[1].toString()
-    let combined = first + second
-
-    ELEV_PROFILE_URL += first
-    ELEV_PROFILE_URL += ','
-    ELEV_PROFILE_URL += second
+    //TODO concat the arrays together 
+    for(let i=0;i<2;i++){
+        if(!i==0){
+            console.log(i)
+            ELEV_PROFILE_URL += chunkyArrs[i]
+            ELEV_PROFILE_URL += ','
+        } 
+    }
 
     let res = await requestFetch(ELEV_PROFILE_URL)
     console.log(res)
+
+
+
 }
 
 function splitArrToSmallerChunks(bigArr){
