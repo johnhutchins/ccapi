@@ -48,17 +48,29 @@ async function getElevation(){
     //TODO below URL works.
     //TODO URL that is built has so many data points that the request returns html, which fails the parsing. 
     //TODO option is to send multiple calls to retrieve the data if there are more than X data points
-
-    const getElevationProfile =  await requestFetch('http://open.mapquestapi.com/elevation/v1/profile?key=CbuVY4beH3NvRW5MMm3cctx6YRqOYrw7&shapeFormat=raw&latLngCollection=39.74012,-104.9849,39.7995,-105.7237,39.6404,-106.3736')
-    //console.log(getElevationProfile)
-
-    let chunksOfTen = splitArrToSmallerChunks(latLongArr)
-    console.log(chunksOfTen)
+    if(latLongArr.length > 10){
+        let chunksOfTen = await splitArrToSmallerChunks(latLongArr)
+        //console.log(chunksOfTen)
+        makeMultipleElevationProfileCallouts(chunksOfTen)
+    } else {
+        console.log("URL doesn't need to be mutated\nProceed as normal")
+    }
 }
 getElevation()
 
+async function makeMultipleElevationProfileCallouts(chunkyArrs){
+    //check length and divide and conquer here
+    console.log(ELEV_PROFILE_URL.length)
+
+    //Have to work with the chunky arrays to build new urls.
+    let multipleCallUrl
+    for(let j=0;j<chunkyArrs.length;j++){
+        //build all of the arrays.
+        
+    }
+}
+
 function splitArrToSmallerChunks(bigArr){
-    //take an array and break it up into separate arrays of 10 each
     let arrOfArr = []
     while(bigArr.length){
         arrOfArr.push(bigArr.splice(0,10))
