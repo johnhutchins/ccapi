@@ -59,9 +59,8 @@ async function makeMultipleElevationProfileCallouts(chunkyArrs){
     //console.log(ELEV_PROFILE_URL.length)
 
     //TODO concat the arrays together 
-    for(let i=0;i<2;i++){
+    for(let i=0;i<52;i++){
         if(!i==0){
-            console.log(i)
             ELEV_PROFILE_URL += chunkyArrs[i]
             ELEV_PROFILE_URL += ','
         } 
