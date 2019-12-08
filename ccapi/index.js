@@ -58,8 +58,7 @@ async function makeMultipleElevationProfileCallouts(chunkyArrs){
     //check length and divide and conquer here
     console.log(ELEV_PROFILE_URL.length)
 
-    //Have to work with the chunky arrays to build new urls.
-    
+    //TODO testing purposes below. this codes need refactor, but this callout will work
     let first = chunkyArrs[0].toString()
     let second = chunkyArrs[1].toString()
     let combined = first + second
