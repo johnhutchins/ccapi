@@ -38,22 +38,18 @@ async function getElevation(){
     //example
     //http://open.mapquestapi.com/elevation/v1/profile?key=CbuVY4beH3NvRW5MMm3cctx6YRqOYrw7&shapeFormat=raw&latLngCollection=39.74012,-104.9849,39.7995,-105.7237,39.6404,-106.3736
     const latLongArr = await latLongArrBuilder()
-
     let s = '&shapeFormat=json&latLngCollection='
-    s += latLongArr
 
     ELEV_PROFILE_URL += keys.API_KEY
     ELEV_PROFILE_URL += s
 
-    //TODO below URL works.
-    //TODO URL that is built has so many data points that the request returns html, which fails the parsing. 
-    //TODO option is to send multiple calls to retrieve the data if there are more than X data points
     if(latLongArr.length > 10){
         let chunksOfTen = await splitArrToSmallerChunks(latLongArr)
         //console.log(chunksOfTen)
         makeMultipleElevationProfileCallouts(chunksOfTen)
     } else {
         console.log("URL doesn't need to be mutated\nProceed as normal")
+        //add array to url and send the shit
     }
 }
 getElevation()
@@ -63,11 +59,17 @@ async function makeMultipleElevationProfileCallouts(chunkyArrs){
     console.log(ELEV_PROFILE_URL.length)
 
     //Have to work with the chunky arrays to build new urls.
-    let multipleCallUrl
-    for(let j=0;j<chunkyArrs.length;j++){
-        //build all of the arrays.
-        
-    }
+    
+    let first = chunkyArrs[0].toString()
+    let second = chunkyArrs[1].toString()
+    let combined = first + second
+
+    ELEV_PROFILE_URL += first
+    ELEV_PROFILE_URL += ','
+    ELEV_PROFILE_URL += second
+
+    let res = await requestFetch(ELEV_PROFILE_URL)
+    console.log(res)
 }
 
 function splitArrToSmallerChunks(bigArr){
