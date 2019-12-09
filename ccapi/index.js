@@ -1,6 +1,7 @@
 const fetch = require('node-fetch')
 const polyline = require('google-polyline')
 const keys = require('../config')
+const UserActivity = require('./UserActivity')
 
 let ELEV_PROFILE_URL = "http://open.mapquestapi.com/elevation/v1/profile"
 
@@ -34,7 +35,7 @@ async function latLongArrBuilder(){
     return latLongArray
 }
 
-async function getElevation(){
+async function getLatLongPairs(){
     //example
     //http://open.mapquestapi.com/elevation/v1/profile?key=CbuVY4beH3NvRW5MMm3cctx6YRqOYrw7&shapeFormat=raw&latLngCollection=39.74012,-104.9849,39.7995,-105.7237,39.6404,-106.3736
     const latLongArr = await latLongArrBuilder()
@@ -44,7 +45,7 @@ async function getElevation(){
     ELEV_PROFILE_URL += s
 
     if(latLongArr.length > 10){
-        let chunksOfTen = await splitArrToSmallerChunks(latLongArr)
+        let chunksOfTen = splitArrToSmallerChunks(latLongArr)
         //console.log(chunksOfTen)
         makeMultipleElevationProfileCallouts(chunksOfTen)
     } else {
@@ -52,23 +53,11 @@ async function getElevation(){
         //add array to url and send the shit
     }
 }
-getElevation()
+getLatLongPairs()
 
 async function makeMultipleElevationProfileCallouts(chunkyArrs){
-    //check length and divide and conquer here
-    //console.log(ELEV_PROFILE_URL.length)
-
-    //TODO concat the arrays together 
-    for(let i=0;i<52;i++){
-        if(!i==0){
-            ELEV_PROFILE_URL += chunkyArrs[i]
-            ELEV_PROFILE_URL += ','
-        } 
-    }
-
-    let res = await requestFetch(ELEV_PROFILE_URL)
-    console.log(res)
-
+    console.log(chunkyArrs)
+    //TODO mutate arrays to remove elevations that are the same!
 
 
 }
@@ -76,7 +65,7 @@ async function makeMultipleElevationProfileCallouts(chunkyArrs){
 function splitArrToSmallerChunks(bigArr){
     let arrOfArr = []
     while(bigArr.length){
-        arrOfArr.push(bigArr.splice(0,10))
+        arrOfArr.push(bigArr.splice(0,50))
     }
     return arrOfArr
 }
