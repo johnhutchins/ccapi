@@ -56,15 +56,15 @@ async function getLatLongPairs(){
 getLatLongPairs()
 
 async function makeMultipleElevationProfileCallouts(chunkyArrs){
-    //TODO mutate arrays to remove elevations that are the same!
-
-
-
     
-    //TODO DO NOT DELETE BELOW 3 LINES
+    //TODO DO NOT DELETE BELOW CODE
     ELEV_PROFILE_URL += chunkyArrs[0]
     let res = await requestFetch(ELEV_PROFILE_URL)
-    console.log(res)
+    const elevProf = res['elevationProfile']
+
+    //console.log(typeof elevProf)
+    removeDuplicatetElevations(elevProf)
+
 }
 
 function splitArrToSmallerChunks(bigArr){
@@ -76,10 +76,15 @@ function splitArrToSmallerChunks(bigArr){
 }
 
 function removeDuplicatetElevations(arr){
-    let updatedArr = []
-    for(let k=0;k<1;k++){
-        //arr[k] is the entire chunky array. need to now loop through the contents of 
-        console.log(arr[k])
-
-    }
+    const filteredArr = arr.reduce((acc, current) => {
+        console.log('acc =' + acc)
+        console.log('current = ' + current)
+        const x = acc.find(item => item.id === current.id);
+        if (!x) {
+          return acc.concat([current]);
+        } else {
+          return acc;
+        }
+      }, []);
+    console.log(filteredArr)
 }
