@@ -63,8 +63,7 @@ async function makeMultipleElevationProfileCallouts(chunkyArrs){
     const elevProf = res['elevationProfile']
 
     //console.log(typeof elevProf)
-    removeDuplicatetElevations(elevProf)
-
+    removeDuplicatetConsecutiveElevations(elevProf)
 }
 
 function splitArrToSmallerChunks(bigArr){
@@ -75,7 +74,7 @@ function splitArrToSmallerChunks(bigArr){
     return arrOfArr
 }
 
-function removeDuplicatetElevations(arr){
+function removeDuplicatetConsecutiveElevations(arr){
     let builtArr = []
     for(let j=0;j<arr.length;j++){
         if(j===0){builtArr.push(arr[j])}
