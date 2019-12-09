@@ -36,7 +36,6 @@ async function latLongArrBuilder(){
 }
 
 async function getLatLongPairs(){
-    //example
     //http://open.mapquestapi.com/elevation/v1/profile?key=CbuVY4beH3NvRW5MMm3cctx6YRqOYrw7&shapeFormat=raw&latLngCollection=39.74012,-104.9849,39.7995,-105.7237,39.6404,-106.3736
     const latLongArr = await latLongArrBuilder()
     let s = '&shapeFormat=json&latLngCollection='
@@ -45,9 +44,10 @@ async function getLatLongPairs(){
     ELEV_PROFILE_URL += s
 
     if(latLongArr.length > 10){
-        let chunksOfTen = splitArrToSmallerChunks(latLongArr)
-        //console.log(chunksOfTen)
-        makeMultipleElevationProfileCallouts(chunksOfTen)
+        let chunksOfFifty = splitArrToSmallerChunks(latLongArr)
+        //console.log(chunksOfFifty[0][0])
+       // chunksOfFifty
+        makeMultipleElevationProfileCallouts(chunksOfFifty)
     } else {
         console.log("URL doesn't need to be mutated\nProceed as normal")
         //add array to url and send the shit
@@ -56,10 +56,15 @@ async function getLatLongPairs(){
 getLatLongPairs()
 
 async function makeMultipleElevationProfileCallouts(chunkyArrs){
-    console.log(chunkyArrs)
     //TODO mutate arrays to remove elevations that are the same!
 
 
+
+    
+    //TODO DO NOT DELETE BELOW 3 LINES
+    ELEV_PROFILE_URL += chunkyArrs[0]
+    let res = await requestFetch(ELEV_PROFILE_URL)
+    console.log(res)
 }
 
 function splitArrToSmallerChunks(bigArr){
@@ -68,4 +73,13 @@ function splitArrToSmallerChunks(bigArr){
         arrOfArr.push(bigArr.splice(0,50))
     }
     return arrOfArr
+}
+
+function removeDuplicatetElevations(arr){
+    let updatedArr = []
+    for(let k=0;k<1;k++){
+        //arr[k] is the entire chunky array. need to now loop through the contents of 
+        console.log(arr[k])
+
+    }
 }
