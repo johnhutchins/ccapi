@@ -76,15 +76,17 @@ function splitArrToSmallerChunks(bigArr){
 }
 
 function removeDuplicatetElevations(arr){
-    const filteredArr = arr.reduce((acc, current) => {
-        console.log('acc =' + acc)
-        console.log('current = ' + current)
-        const x = acc.find(item => item.id === current.id);
-        if (!x) {
-          return acc.concat([current]);
-        } else {
-          return acc;
+    let builtArr = []
+    for(let j=0;j<arr.length;j++){
+        if(j===0){builtArr.push(arr[j])}
+        if(j>0){
+            if(arr[j]['height'] === arr[j-1]['height']){
+                //don't add it
+            } else {
+                builtArr.push(arr[j])
+            }
         }
-      }, []);
-    console.log(filteredArr)
+    }
+    console.log(builtArr)
+    return builtArr
 }
