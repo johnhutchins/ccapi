@@ -59,7 +59,7 @@ async function makeMultipleElevationProfileCallouts(chunkyArrs){
     
     //TODO DO NOT DELETE BELOW CODE
     let arrayOfURLs = []
-    const baseUrl = "http://open.mapquestapi.com/elevation/v1/profile?key=CbuVY4beH3NvRW5MMm3cctx6YRqOYrw7&shapeFormat=json&latLngCollection="
+    let baseUrl = keys.BASE_URL
 
     chunkyArrs.forEach((arr)=>{
         let tempUrl = baseUrl
