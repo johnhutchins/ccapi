@@ -58,12 +58,26 @@ getLatLongPairs()
 async function makeMultipleElevationProfileCallouts(chunkyArrs){
     
     //TODO DO NOT DELETE BELOW CODE
-    ELEV_PROFILE_URL += chunkyArrs[0]
-    let res = await requestFetch(ELEV_PROFILE_URL)
-    const elevProf = res['elevationProfile']
+    let arrayOfURLs = []
+    const baseUrl = "http://open.mapquestapi.com/elevation/v1/profile?key=CbuVY4beH3NvRW5MMm3cctx6YRqOYrw7&shapeFormat=json&latLngCollection="
 
-    //console.log(typeof elevProf)
-    removeDuplicatetConsecutiveElevations(elevProf)
+    chunkyArrs.forEach((arr)=>{
+        let tempUrl = baseUrl
+        tempUrl += arr
+        arrayOfURLs.push(tempUrl)
+    })
+    //console.log(arrayOfURLs)
+    urlsIntoLargeElevationProfile(arrayOfURLs)
+}
+
+async function urlsIntoLargeElevationProfile(urls){
+    let fullElevProf = []
+    for(let k=0;k<2;k++){
+        let response = await requestFetch(urls[k])
+        //console.log(response['elevationProfile'])
+        fullElevProf.push(response['elevationProfile'])
+    }
+    console.log(fullElevProf[1])
 }
 
 function splitArrToSmallerChunks(bigArr){
