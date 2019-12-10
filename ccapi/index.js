@@ -72,37 +72,34 @@ async function makeMultipleElevationProfileCallouts(chunkyArrs){
 async function urlsIntoLargeElevationProfile(urls){
     let initialValueToAdd
     let valueToAdd
-    let fullElevProf = []
-    //todo change below to urls.length
-    for(let k=0;k<10;k++){
+    let smashedElevProf = []
+    for(let k=0;k<urls.length;k++){
         let response = await requestFetch(urls[k])
         let lastdistance = response['elevationProfile'][response['elevationProfile'].length - 1]['distance']
-        //console.log(response['elevationProfile'])
-
-        //get the inital value we need to add
         if(k===0){
             initialValueToAdd = response['elevationProfile'][response['elevationProfile'].length - 1]['distance']
+            smashedElevProf.push(response['elevationProfile'])
         }
         if(k===1){
             for(let j=0;j<response['elevationProfile'].length;j++){
                 response['elevationProfile'][j]['distance'] += initialValueToAdd
             }
             valueToAdd = response['elevationProfile'][response['elevationProfile'].length - 1]['distance']
+            smashedElevProf = smashedElevProf[0].concat(response['elevationProfile'])
         }
         if(k>1){
-            //if k is greater than 1, every single distance value needs to be updated with the valueToAdd var
-
            for(let h=0;h<response['elevationProfile'].length;h++){
                response['elevationProfile'][h]['distance'] += valueToAdd
                if(h + 1 === 50){
-                //console.log(response['elevationProfile'][h]['distance'])
-                valueToAdd = response['elevationProfile'][h]['distance']
+                    valueToAdd = response['elevationProfile'][h]['distance']
                }
-               console.log(response['elevationProfile'][h])
            }
+           smashedElevProf = smashedElevProf.concat(response['elevationProfile'])
         }
 
     }
+    console.dir(smashedElevProf, {'maxArrayLength': null} );
+    //console.log("AFTERWARDS SMASHED ARRAY = ", smashedElevProf)
 }
 
 function splitArrToSmallerChunks(bigArr){
