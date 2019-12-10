@@ -45,8 +45,6 @@ async function getLatLongPairs(){
 
     if(latLongArr.length > 10){
         let chunksOfFifty = splitArrToSmallerChunks(latLongArr)
-        //console.log(chunksOfFifty[0][0])
-       // chunksOfFifty
         makeMultipleElevationProfileCallouts(chunksOfFifty)
     } else {
         console.log("URL doesn't need to be mutated\nProceed as normal")
@@ -56,11 +54,8 @@ async function getLatLongPairs(){
 getLatLongPairs()
 
 async function makeMultipleElevationProfileCallouts(chunkyArrs){
-    
-    //TODO DO NOT DELETE BELOW CODE
     let arrayOfURLs = []
     let baseUrl = keys.BASE_URL
-
     chunkyArrs.forEach((arr)=>{
         let tempUrl = baseUrl
         tempUrl += arr
@@ -96,10 +91,8 @@ async function urlsIntoLargeElevationProfile(urls){
            }
            smashedElevProf = smashedElevProf.concat(response['elevationProfile'])
         }
-
     }
-    console.dir(smashedElevProf, {'maxArrayLength': null} );
-    //console.log("AFTERWARDS SMASHED ARRAY = ", smashedElevProf)
+    removeDuplicatetConsecutiveElevations(smashedElevProf)
 }
 
 function splitArrToSmallerChunks(bigArr){
@@ -122,6 +115,6 @@ function removeDuplicatetConsecutiveElevations(arr){
             }
         }
     }
-    console.log(builtArr)
+    console.dir(builtArr, {'maxArrayLength': null} );
     return builtArr
 }
