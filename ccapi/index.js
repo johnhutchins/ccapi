@@ -51,7 +51,7 @@ async function getLatLongPairs(){
         //add array to url and send the shit
     }
 }
-getLatLongPairs()
+//getLatLongPairs()
 
 async function makeMultipleElevationProfileCallouts(chunkyArrs){
     let arrayOfURLs = []
@@ -117,4 +117,8 @@ function removeDuplicatetConsecutiveElevations(arr){
     }
     console.dir(builtArr, {'maxArrayLength': null} );
     return builtArr
+}
+
+module.exports = {
+    getMapPolyline: getMapPolyline
 }
