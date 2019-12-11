@@ -120,5 +120,6 @@ function removeDuplicatetConsecutiveElevations(arr){
 }
 
 module.exports = {
-    getMapPolyline: getMapPolyline
+    getMapPolyline: getMapPolyline,
+    getLatLong: getLatLong
 }
