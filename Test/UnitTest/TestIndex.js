@@ -20,3 +20,7 @@ async function testGetLatLong(){
 }
 //testGetLatLong()
 
+async function testLatLongArrBuilder(){
+    
+}
+
