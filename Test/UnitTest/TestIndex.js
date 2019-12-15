@@ -9,16 +9,14 @@ async function testGetPolyline(){
 }
 //testGetPolyline()
 
-
 async function testGetLatLong(){
     let latLong = await indexFile.getLatLong().then((line)=>{
-        //console.log(line[0])
-        return line[0][0]
+        return line[0]
     })
-    assert.equal(latLong,37.82822)
-    return latLong
+    assert.equal(JSON.stringify(latLong), JSON.stringify([37.82822, -122.26348]))
+    //return latLong
 }
-//testGetLatLong()
+testGetLatLong()
 
 async function testLatLongArrBuilder(){
     
