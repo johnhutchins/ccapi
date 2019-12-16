@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "dev2": "//nothing here yet...",
-    "start": "concurrently \"cd Test/ && node mockDataServer.js\" \"cd ccapi/ && node index.js\""
+    "start": "concurrently \"cd Test/ && node mockDataServer.js\" \"cd ccapi/ && node index.js\"",
+    "local": "concurrently \"cd Test/ && node mockDataServer.js\" \"cd Test/UnitTest/ && node TestIndex.js\""
   },
   "keywords": [],
   "author": "",

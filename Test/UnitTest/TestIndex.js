@@ -16,7 +16,7 @@ async function testGetLatLong(){
     assert.equal(JSON.stringify(latLong), JSON.stringify([37.82822, -122.26348]))
     //return latLong
 }
-testGetLatLong()
+//testGetLatLong()
 
 async function testLatLongArrBuilder(){
     
