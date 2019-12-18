@@ -27,11 +27,9 @@ async function getLatLong(){
 }
 
 async function getElevationProfileImage(){
-    //http://open.mapquestapi.com/elevation/v1/chart?key=KEY&shapeFormat=raw&width=425&height=350&latLngCollection=
     let latLongPairs = await latLongArrBuilder()
     //TODO have to reduce the number of latLongPairs, and concat them together 
-    //TODO setup a sample reducer to grab like, 50 data points and send them as the secund argument in res.
-
+    //TODO  url is too long if full request is sent
     let res = await requestFetch(ELEVATION_PROFILE_BASE_URL + latLongPairs[0])
     console.log(res)
 }
