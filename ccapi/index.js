@@ -4,7 +4,7 @@ const keys = require('../config')
 const UserActivity = require('./UserActivity')
 
 let ELEV_PROFILE_URL = "http://open.mapquestapi.com/elevation/v1/profile"
-
+let ELEV_PROFILE_IMG = "http://open.mapquestapi.com/elevation/v1/chart?key=KEY&shapeFormat=raw&width=425&height=350&latLngCollection="
 //const BASE_URL = 'https://www.strava.com/api/v3/'
 const TEST_URL = 'http://localhost:5000'
 
@@ -24,6 +24,12 @@ async function getMapPolyline() {
 async function getLatLong(){
     const res = await getMapPolyline()
     return polyline.decode(res.mapPolyLine)
+}
+
+async function getElevationProfile(){
+    //http://open.mapquestapi.com/elevation/v1/chart?key=KEY&shapeFormat=raw&width=425&height=350&latLngCollection=
+    let latLongPairs = await getLatLong()
+    //TODO is this a new fetch?
 }
 
 async function latLongArrBuilder(){
