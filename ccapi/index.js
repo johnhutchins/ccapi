@@ -4,7 +4,9 @@ const keys = require('../config')
 const UserActivity = require('./UserActivity')
 
 let ELEV_PROFILE_URL = "http://open.mapquestapi.com/elevation/v1/profile"
-
+let ELEV_PROFILE_IMG = "http://open.mapquestapi.com/elevation/v1/chart?key=KEY&shapeFormat=raw&width=425&height=350&latLngCollection="
+let ELEVATION_PROFILE_BASE_URL = process.env.ELEVATION_PROFILE_BASE_URL
+//const ELEV_PROFILE_ID =
 //const BASE_URL = 'https://www.strava.com/api/v3/'
 const TEST_URL = 'http://localhost:5000'
 
@@ -25,6 +27,17 @@ async function getLatLong(){
     const res = await getMapPolyline()
     return polyline.decode(res.mapPolyLine)
 }
+
+async function getElevationProfileImage(){
+    //http://open.mapquestapi.com/elevation/v1/chart?key=KEY&shapeFormat=raw&width=425&height=350&latLngCollection=
+    let latLongPairs = await latLongArrBuilder()
+
+    let res = await requestFetch(ELEVATION_PROFILE_BASE_URL + latLongPairs[0])
+    //ELEVATION_PROFILE_BASE_URL
+    //todo the above is probably too long
+    console.log(res)
+}
+getElevationProfileImage()
 
 async function latLongArrBuilder(){
     const latLongObj = await getLatLong()
