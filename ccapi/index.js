@@ -3,8 +3,6 @@ const polyline = require('google-polyline')
 const keys = require('../config')
 const UserActivity = require('./UserActivity')
 
-let ELEV_PROFILE_URL = "http://open.mapquestapi.com/elevation/v1/profile"
-let ELEV_PROFILE_IMG = "http://open.mapquestapi.com/elevation/v1/chart?key=KEY&shapeFormat=raw&width=425&height=350&latLngCollection="
 let ELEVATION_PROFILE_BASE_URL = process.env.ELEVATION_PROFILE_BASE_URL
 //const ELEV_PROFILE_ID =
 //const BASE_URL = 'https://www.strava.com/api/v3/'
@@ -29,12 +27,10 @@ async function getLatLong(){
 }
 
 async function getElevationProfileImage(){
-    //http://open.mapquestapi.com/elevation/v1/chart?key=KEY&shapeFormat=raw&width=425&height=350&latLngCollection=
     let latLongPairs = await latLongArrBuilder()
-
+    //TODO have to reduce the number of latLongPairs, and concat them together 
+    //TODO  url is too long if full request is sent
     let res = await requestFetch(ELEVATION_PROFILE_BASE_URL + latLongPairs[0])
-    //ELEVATION_PROFILE_BASE_URL
-    //todo the above is probably too long
     console.log(res)
 }
 getElevationProfileImage()
