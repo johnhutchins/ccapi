@@ -117,11 +117,8 @@ function removeDuplicatetConsecutiveElevations(arr){
     for(let j=0;j<arr.length;j++){
         if(j===0){builtArr.push(arr[j])}
         if(j>0){
-            if(arr[j]['height'] === arr[j-1]['height']){
-                //don't add it
-            } else {
+            if(!arr[j]['height'] === arr[j-1]['height']){
                 builtArr.push(arr[j])
-            }
         }
     }
     console.dir(builtArr, {'maxArrayLength': null} );
