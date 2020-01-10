@@ -107,6 +107,8 @@ async function urlsIntoLargeElevationProfile(urls){
         }
     }
     //console.log(JSON.stringify(smashedElevProf))
+    //smashed eleve prof
+
     removeDuplicatetConsecutiveElevations(smashedElevProf)
 }
 
@@ -118,20 +120,21 @@ function splitArrToSmallerChunks(bigArr){
     return arrOfArr
 }
 
-//FUCKING ISSUE IN HERE
+//TODO does this need to take height and distance into account?
 function removeDuplicatetConsecutiveElevations(arr){
     let builtArr = []
-    //THIS IS ONLY EVER FIRING ONCE
     for(let j=0;j<arr.length;j++){
         if(j===0){builtArr.push(arr[j])}
         if(j>0){
             if(!arr[j]['height'] === arr[j-1]['height']){
+
+            } else {
                 builtArr.push(arr[j])
             }
         }
     }
-    console.log("Built array = " + builtArr.length)
-    //console.dir(builtArr, {'maxArrayLength': null} )
+    //console.log("Built array = " + builtArr.length)
+    console.dir(builtArr, {'maxArrayLength': null} )
     return builtArr
 }
 
