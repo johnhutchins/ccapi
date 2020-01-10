@@ -1,15 +1,22 @@
 {
   "name": "ccapiv2",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "API for the Cycle Cyle App",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev2": "//nothing here yet...",
+    "start": "concurrently \"cd Test/ && node mockDataServer.js\" \"cd ccapi/ && node index.js\"",
+    "local": "concurrently \"cd Test/ && node mockDataServer.js\" \"cd Test/UnitTest/ && node TestIndex.js\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-fetch": "^2.6.0"
+    "concurrently": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "google-polyline": "^1.0.3",
+    "node-fetch": "^2.6.0",
+    "serve-static": "^1.14.1"
   }
 }
