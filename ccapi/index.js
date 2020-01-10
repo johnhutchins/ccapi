@@ -26,14 +26,22 @@ async function getLatLong(){
     return polyline.decode(res.mapPolyLine)
 }
 
-async function getElevationProfileImage(){
-    let latLongPairs = await latLongArrBuilder()
-    //TODO have to reduce the number of latLongPairs, and concat them together 
-    //TODO  url is too long if full request is sent
-    let res = await requestFetch(ELEVATION_PROFILE_BASE_URL + latLongPairs[0])
-    console.log(res)
-}
-getElevationProfileImage()
+// async function getElevationProfileImage(){
+//     let latLongPairs = await latLongArrBuilder()
+//     //TODO have to reduce the number of latLongPairs, and concat them together 
+//     //TODO  url is too long if full request is sent
+//     let testArr = []
+//     testArr += latLongPairs[0]
+//     testArr += ","
+//     testArr += latLongPairs[1]
+
+//     //console.log("TEST ARRAY " + testArr)
+//     console.log(ELEVATION_PROFILE_BASE_URL + testArr)
+
+//     let res = await requestFetch(ELEVATION_PROFILE_BASE_URL + testArr)
+//     console.log(res)
+// }
+//getElevationProfileImage()
 
 async function latLongArrBuilder(){
     const latLongObj = await getLatLong()
@@ -47,10 +55,6 @@ async function latLongArrBuilder(){
 async function getLatLongPairs(){
     //http://open.mapquestapi.com/elevation/v1/profile?key=CbuVY4beH3NvRW5MMm3cctx6YRqOYrw7&shapeFormat=raw&latLngCollection=39.74012,-104.9849,39.7995,-105.7237,39.6404,-106.3736
     const latLongArr = await latLongArrBuilder()
-    let s = '&shapeFormat=json&latLngCollection='
-
-    ELEV_PROFILE_URL += keys.API_KEY
-    ELEV_PROFILE_URL += s
 
     if(latLongArr.length > 10){
         let chunksOfFifty = splitArrToSmallerChunks(latLongArr)
@@ -60,11 +64,11 @@ async function getLatLongPairs(){
         //add array to url and send the shit
     }
 }
-//getLatLongPairs()
+getLatLongPairs()
 
 async function makeMultipleElevationProfileCallouts(chunkyArrs){
     let arrayOfURLs = []
-    let baseUrl = keys.BASE_URL
+    let baseUrl = keys.ELEVATION_PROFILE_BASE_URL
     chunkyArrs.forEach((arr)=>{
         let tempUrl = baseUrl
         tempUrl += arr
@@ -74,6 +78,7 @@ async function makeMultipleElevationProfileCallouts(chunkyArrs){
 }
 
 async function urlsIntoLargeElevationProfile(urls){
+    //console.log("URLs = " + urls)
     let initialValueToAdd
     let valueToAdd
     let smashedElevProf = []
@@ -101,6 +106,7 @@ async function urlsIntoLargeElevationProfile(urls){
            smashedElevProf = smashedElevProf.concat(response['elevationProfile'])
         }
     }
+    //console.log(JSON.stringify(smashedElevProf))
     removeDuplicatetConsecutiveElevations(smashedElevProf)
 }
 
@@ -112,8 +118,10 @@ function splitArrToSmallerChunks(bigArr){
     return arrOfArr
 }
 
+//FUCKING ISSUE IN HERE
 function removeDuplicatetConsecutiveElevations(arr){
     let builtArr = []
+    //THIS IS ONLY EVER FIRING ONCE
     for(let j=0;j<arr.length;j++){
         if(j===0){builtArr.push(arr[j])}
         if(j>0){
@@ -122,7 +130,8 @@ function removeDuplicatetConsecutiveElevations(arr){
             }
         }
     }
-    console.dir(builtArr, {'maxArrayLength': null} );
+    console.log("Built array = " + builtArr.length)
+    //console.dir(builtArr, {'maxArrayLength': null} )
     return builtArr
 }
 
