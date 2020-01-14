@@ -106,9 +106,6 @@ async function urlsIntoLargeElevationProfile(urls){
            smashedElevProf = smashedElevProf.concat(response['elevationProfile'])
         }
     }
-    //console.log(JSON.stringify(smashedElevProf))
-    //smashed eleve prof
-
     removeDuplicatetConsecutiveElevations(smashedElevProf)
 }
 
