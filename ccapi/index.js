@@ -43,6 +43,7 @@ async function getLatLong(){
 // }
 //getElevationProfileImage()
 
+//this returns lat/long pairings. smoothing algorithmns can be run here
 async function latLongArrBuilder(){
     const latLongObj = await getLatLong()
     let latLongArray = []
@@ -52,7 +53,7 @@ async function latLongArrBuilder(){
     return latLongArray
 }
 
-async function getLatLongPairs(){
+async function splitLatLongPairs(){
     //http://open.mapquestapi.com/elevation/v1/profile?key=CbuVY4beH3NvRW5MMm3cctx6YRqOYrw7&shapeFormat=raw&latLngCollection=39.74012,-104.9849,39.7995,-105.7237,39.6404,-106.3736
     const latLongArr = await latLongArrBuilder()
 
@@ -64,7 +65,7 @@ async function getLatLongPairs(){
         //add array to url and send the shit
     }
 }
-getLatLongPairs()
+splitLatLongPairs()
 
 async function makeMultipleElevationProfileCallouts(chunkyArrs){
     let arrayOfURLs = []
@@ -78,7 +79,6 @@ async function makeMultipleElevationProfileCallouts(chunkyArrs){
 }
 
 async function urlsIntoLargeElevationProfile(urls){
-    //console.log("URLs = " + urls)
     let initialValueToAdd
     let valueToAdd
     let smashedElevProf = []
@@ -117,7 +117,6 @@ function splitArrToSmallerChunks(bigArr){
     return arrOfArr
 }
 
-//TODO does this need to take height and distance into account?
 function removeDuplicatetConsecutiveElevations(arr){
     let builtArr = []
     for(let j=0;j<arr.length;j++){
