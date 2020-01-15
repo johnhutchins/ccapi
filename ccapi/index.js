@@ -6,10 +6,14 @@ const UserActivity = require('./UserActivity')
 let ELEVATION_PROFILE_BASE_URL = process.env.ELEVATION_PROFILE_BASE_URL
 //const ELEV_PROFILE_ID =
 //const BASE_URL = 'https://www.strava.com/api/v3/'
+//TODO add strava fake endpoint for now, just to run througha real test.
+const PROD_TEST_URL = 'https://www.strava.com/api/v3/activity/12345678987654320'
+
+//below should be used only when testing.
 const TEST_URL = 'http://localhost:5049'
 
-async function requestFetch(TEST_URL) {
-  return fetch(TEST_URL)
+async function requestFetch(PROD_TEST_URL) {
+  return fetch(PROD_TEST_URL)
     .then(response => response.json())
 }
 
