@@ -1,6 +1,8 @@
 let express = require('express')
 let app = express()
-//app.get('/static', express.static(path.join(__dirname, 'ccapi/'))) 
-app.get('/index.js', function (req, res) {
+app.use('/static', express.static(path.join(__dirname, 'ccapi/'))) 
+app.get('/', function (req, res) {
     res.send('index.js')
-  })
+})
+
+app.listen()
