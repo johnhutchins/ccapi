@@ -13,7 +13,7 @@ let ELEVATION_PROFILE_BASE_URL = process.env.ELEVATION_PROFILE_BASE_URL
 const PROD_TEST_URL = 'https://www.strava.com/api/v3/activities/12345678987654320'
 
 const PROD_ACTIVITY_URL = 'https://www.strava.com/api/v3/activities'
-let activity = (PROD_ACTIVITY_URL += {actiivity})
+//let activity = (PROD_ACTIVITY_URL += {actiivity})
 
 //below should be used only when testing.
 const TEST_URL = 'http://localhost:5049'
