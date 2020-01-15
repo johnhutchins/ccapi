@@ -1,8 +1,11 @@
 let express = require('express')
 let app = express()
+var path = require("path")
 app.use('/static', express.static(path.join(__dirname, 'ccapi/'))) 
 app.get('/', function (req, res) {
-    res.send('index.js')
+    res.sendFile('index.js')
 })
 
-app.listen()
+app.listen(path, function () {
+    console.log('Node server is running..');
+})
