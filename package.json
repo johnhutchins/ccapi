@@ -4,10 +4,9 @@
   "description": "API for the Cycle Cyle App",
   "main": "index.js",
   "scripts": {
-    "dev2": "//nothing here yet...",
     "start": "cd ccapi && node server.js",
     "heroku-postbuild": "cd ccapi && node index.js",
-    "dev": "(cd Test/ && node mockDataServer.js) & (cd ccapi/ && node index.js)"
+    "test": "(cd Test/ && node server.js) & (cd ccapi/ && node index.js)"
   },
   "keywords": [],
   "author": "",
