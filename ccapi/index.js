@@ -9,7 +9,8 @@ let ELEVATION_PROFILE_BASE_URL = process.env.ELEVATION_PROFILE_BASE_URL
 
 
 //TODO add strava fake endpoint for now, just to run througha real test.
-const PROD_TEST_URL = 'https://www.strava.com/api/v3/activity/12345678987654320'
+//https://www.strava.com/api/v3/activities/12345678987654320
+const PROD_TEST_URL = 'https://www.strava.com/api/v3/activities/12345678987654320'
 
 //below should be used only when testing.
 const TEST_URL = 'http://localhost:5049'
