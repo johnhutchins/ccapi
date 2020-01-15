@@ -2,11 +2,12 @@
   "name": "ccapiv2",
   "version": "0.0.1",
   "description": "API for the Cycle Cyle App",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "dev2": "//nothing here yet...",
-    "start": "concurrently \"cd Test/ && node mockDataServer.js\" \"cd ccapi/ && node index.js\"",
-    "local": "concurrently \"cd Test/ && node mockDataServer.js\" \"cd Test/UnitTest/ && node TestIndex.js\""
+    "start": "cd ccapi && node server.js",
+    "heroku-postbuild": "cd ccapi && node index.js",
+    "dev": "(cd Test/ && node mockDataServer.js) & (cd ccapi/ && node index.js)"
   },
   "keywords": [],
   "author": "",

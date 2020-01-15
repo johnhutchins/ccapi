@@ -6,7 +6,7 @@ const UserActivity = require('./UserActivity')
 let ELEVATION_PROFILE_BASE_URL = process.env.ELEVATION_PROFILE_BASE_URL
 //const ELEV_PROFILE_ID =
 //const BASE_URL = 'https://www.strava.com/api/v3/'
-const TEST_URL = 'http://localhost:5000'
+const TEST_URL = 'http://localhost:5049'
 
 async function requestFetch(TEST_URL) {
   return fetch(TEST_URL)
