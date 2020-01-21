@@ -4,16 +4,12 @@ const keys = require('../config')
 const UserActivity = require('./UserActivity')
 
 let ELEVATION_PROFILE_BASE_URL = process.env.ELEVATION_PROFILE_BASE_URL
-//const ELEV_PROFILE_ID =
-//const BASE_URL = 'https://www.strava.com/api/v3/'
-
 
 //TODO add strava fake endpoint for now, just to run througha real test.
 //https://www.strava.com/api/v3/activities/12345678987654320
 const PROD_TEST_URL = 'https://www.strava.com/api/v3/activities/12345678987654320'
 
 const PROD_ACTIVITY_URL = 'https://www.strava.com/api/v3/activities'
-//let activity = (PROD_ACTIVITY_URL += {actiivity})
 
 //below should be used only when testing.
 const TEST_URL = 'http://localhost:5049'
