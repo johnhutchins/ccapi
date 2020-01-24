@@ -1,5 +1,0 @@
-cd Test/
-node mockDataServer.js
-
-cd ccapi/
-node index.js
