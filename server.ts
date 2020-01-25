@@ -3,8 +3,8 @@ import { apiGetRides } from "./api/apiGetRides";
 import { apiGetIndividualRide } from "./api/apiGetIndividualRide";
 const app = express()
 
-
 app.get('/', (req,res,next)=>{
+    //this should just show the strava API logo 
     res.send('Strava Rides API')
 })
 
