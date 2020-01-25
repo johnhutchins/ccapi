@@ -7,8 +7,11 @@ const express_1 = __importDefault(require("express"));
 const apiGetRides_1 = require("./api/apiGetRides");
 const apiGetIndividualRide_1 = require("./api/apiGetIndividualRide");
 const app = express_1.default();
+app.use(express_1.default.static('public'));
+//this needs to be fixed....
 app.get('/', (req, res, next) => {
-    res.send('Strava Rides API');
+    //this should just show the homer gif
+    //res.send("<img src='./public/images/homer.gif'")
 });
 //return a list of all available rides
 app.get('/rides', apiGetRides_1.apiGetRides);

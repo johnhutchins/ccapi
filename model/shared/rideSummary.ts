@@ -1,5 +1,5 @@
 export class RideSummary {
-    id: number
+    id: string
     name: string
     dataPoints: object
     constructor(data: any){
