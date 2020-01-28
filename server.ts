@@ -1,6 +1,7 @@
 import express from "express"
 import { apiGetRides } from "./api/apiGetRides"
 import { apiGetIndividualRide } from "./api/apiGetIndividualRide"
+import { apiGetSegment } from "./api/apiGetSegment"
 import path from "path"
 const app = express()
 
@@ -18,6 +19,9 @@ app.get('/rides', apiGetRides)
 
 //return individual ride based on what was selected in UI
 app.get('/rides/:id', apiGetIndividualRide)
+
+//return the segment profile
+app.get('/segment/:id', apiGetSegment)
 
 app.listen(process.env.PORT || 8091, ()=>{
     console.log("Server Started")
