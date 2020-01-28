@@ -10,6 +10,8 @@ const app = express_1.default();
 app.use(express_1.default.static('public'));
 //this needs to be fixed....
 app.get('/', (req, res, next) => {
+    res.send("<img src='./public/images'>");
+    res.json({ 'status': "You didn't mean to come here..." });
     //this should just show the homer gif
     //res.send("<img src='./public/images/homer.gif'")
 });
