@@ -1,31 +1,37 @@
-[ {
-    "startDistance": 0,
-    "startElevation": 22.8270060662909,
-    "endDistance": 2123.47925585013,
-    "endElevation": 189.115468779298,
-    "slope": 4.477662203632539,
-    "points": 8,
-    "startPoint": 0,
-    "endPoint": 8
-  },
+[
   {
-    "startDistance": 2123.47925585013,
-    "startElevation": 189.115468779298,
-    "endDistance": 5068.5975318293,
-    "endElevation": 200.45620978553,
-    "slope": 0.22062726306972122,
-    "points": 9,
-    "startPoint": 8,
-    "endPoint": 17
-  },
-  {
-    "startDistance": 5068.5975318293,
-    "startElevation": 200.45620978553,
-    "endDistance": 5727.85535526974,
-    "endElevation": 100.648855119956,
-    "slope": -8.608834820464832,
-    "points": 2,
-    "startPoint": 17,
-    "endPoint": 19
-  }
-]
+    "name": "sampleRide",
+    "id": 1,
+    "segments": [
+      {
+        "startDistance": 0,
+        "startElevation": 22.8270060662909,
+        "endDistance": 2123.47925585013,
+        "endElevation": 189.115468779298,
+        "slope": 4.477662203632539,
+        "points": 8,
+        "startPoint": 0,
+        "endPoint": 8
+      },
+      {
+        "startDistance": 2123.47925585013,
+        "startElevation": 189.115468779298,
+        "endDistance": 5068.5975318293,
+        "endElevation": 200.45620978553,
+        "slope": 0.22062726306972122,
+        "points": 9,
+        "startPoint": 8,
+        "endPoint": 17
+      },
+      {
+        "startDistance": 5068.5975318293,
+        "startElevation": 200.45620978553,
+        "endDistance": 5727.85535526974,
+        "endElevation": 100.648855119956,
+        "slope": -8.608834820464832,
+        "points": 2,
+        "startPoint": 17,
+        "endPoint": 19
+      }
+	]
+}]

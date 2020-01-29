@@ -7,6 +7,7 @@ exports.apiGetSegment = (req, res, next) => {
     const selectedRide = data_1.DataStore.segments.find((element) => element.id == segmentId);
     if (selectedRide) {
         res.json(new segmentSummary_1.SegmentSummary(selectedRide));
+        console.log("Selected Ride: " + selectedRide);
     }
     else {
         res.json({ "status": "Failed", "message": "Segment with this ID does not exist", "segmentId": segmentId });
