@@ -1,4 +1,9 @@
-[{
+[
+    {
+        "name": "sampleRide",
+        "id":1,
+        "segments":[
+    {
         "startDistance": 0,
         "startElevation": 22.8270060662909,
         "endDistance": 2123.47925585013,
@@ -28,4 +33,6 @@
         "startPoint": 17,
         "endPoint": 19
     }
+]
+}
 ]
