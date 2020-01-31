@@ -13,11 +13,8 @@ app.use(express_1.default.static('public'));
 app.get('/', (req, res, next) => {
     res.json({ 'status': "You didn't mean to come here..." });
 });
-//return a list of all available rides
 app.get('/rides', apiGetRides_1.apiGetRides);
-//return individual ride based on what was selected in UI
 app.get('/rides/:id', apiGetIndividualRide_1.apiGetIndividualRide);
-//return the segment profile
 app.get('/segment/:id', apiGetSegment_1.apiGetSegment);
 app.listen(process.env.PORT || 8091, () => {
     console.log("Server Started");

@@ -11,13 +11,10 @@ app.get('/', (req,res,next)=>{
     res.json({'status':"You didn't mean to come here..."})
 })
 
-//return a list of all available rides
 app.get('/rides', apiGetRides)
 
-//return individual ride based on what was selected in UI
 app.get('/rides/:id', apiGetIndividualRide)
 
-//return the segment profile
 app.get('/segment/:id', apiGetSegment)
 
 app.listen(process.env.PORT || 8091, ()=>{
