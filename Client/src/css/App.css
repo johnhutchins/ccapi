@@ -1,0 +1,153 @@
+
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+:root {
+	--primary-color: #cc0000;
+	--secondary-color: #7c0000;
+}
+
+html,
+body {
+	
+  height: 100vh;
+  max-width: 375px;
+  margin: 0 auto;
+  background: rgb(33, 33, 33)
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	display: flex;
+	flex-direction: column;
+}
+
+/* For sticky footer - grow to fill the space */
+.content {
+  flex: 1 0 auto;
+  background-color: white;
+}
+
+
+.container {
+	width: 90%;
+	margin: 0 auto;
+	overflow: none;
+	padding: 10px;
+}
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.graph {
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.graph h3 {
+  padding: 10px;
+  font-style: italic;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 10px;
+}
+
+.grid .item {
+	display: flex;
+	flex-direction: column;
+	border: 1px #ccc solid;
+	padding: 10px;
+	box-shadow: 1px 1px 2px #ccc;
+}
+
+.grid .item h4 {
+	margin-bottom: 5px;
+}
+
+.grid .item p {
+	font-size: 14px;
+	color: var(--secondary-color);
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.grid .item img {
+	width: 30px;
+	text-align: right;
+	display: block;
+	align-self: flex-end;
+}
+
+.app-footer {
+	flex-shrink: 0;
+	background: #f4f4f4;
+	color: #444;
+	padding: 10px;
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+.app-footer ul {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.app-footer ul li {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.app-footer ul li i {
+	font-size: 22px;
+}
+
+
+.stopwatch {
+  background-color: #ccc;
+  padding-bottom: 20px;
+}
+
+.runningTime {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+button {
+  color: orange;
+  background-color: #282c34;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 8px;
+  width: 150px;
+  margin: 10px;
+}
